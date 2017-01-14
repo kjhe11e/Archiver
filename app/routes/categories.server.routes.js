@@ -2,8 +2,10 @@
 
 module.exports = function(app) {
 	// Routing logic   
+	var categories = require('../../app/controllers/categories.server.controller');
+
 	app.route('/categories')
-		.get(function (request, response) {
-			response.json([{ name: 'Jobs' }, { name: 'Recruiters' }]);
-		});
+		.get(categories.list)
+		.post(categories.create);
+
 };
