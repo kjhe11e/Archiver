@@ -18,11 +18,9 @@ var mongoose = require('mongoose'),
  * Category Schema
  */
 var CategorySchema = new Schema({
-	// Category model fields   
-	
 	// property name
 	created: {
-		type: Date,	//types are defined
+		type: Date, //types are defined
 		default: Date.now
 	},
 	description: {

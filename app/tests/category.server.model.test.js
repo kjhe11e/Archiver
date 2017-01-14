@@ -20,7 +20,7 @@ describe('Category Model', function() {
 			});
 
 			category.save(function(err, saved) {
-				shoud.not.exist(err);
+				should.not.exist(err);
 				done();
 			});
 		});
