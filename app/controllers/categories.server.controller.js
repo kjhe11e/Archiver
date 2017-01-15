@@ -51,6 +51,19 @@ exports.read = function(req, res) {
  * Update a Category
  */
 exports.update = function(req, res) {
+	var category = req.category;
+
+	category = _.extend(category, req.body);
+
+	category.save(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			return res.json(category);
+		}
+	});
 
 };
 
@@ -74,5 +87,28 @@ exports.list = function(req, res) {
 
 			return res.json(categories);
 		}
+	});
+};
+
+/**
+ * Cateogry middleware
+ */
+exports.categoryById = function(req, res, next, id) {
+	if(!mongoose.Types.ObjectId.isValid(id)) {
+		return res.status(400).send({
+			message: "Invalid category"
+		});
+	}
+
+	Category.findById(id).exec(function(err, category) {
+		if (err)
+			return next(err);
+		if (!category) {
+			return res.status(404).send({
+				message: "Category not found"
+			});
+		}
+		req.category = category;
+		next();
 	});
 };
