@@ -71,7 +71,17 @@ exports.update = function(req, res) {
  * Delete an Category
  */
 exports.delete = function(req, res) {
+	var category = req.category;
 
+	category.remove(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			return res.json(category);
+		}
+	});
 };
 
 /**

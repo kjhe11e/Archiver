@@ -10,7 +10,8 @@ module.exports = function(app) {
 
 	app.route('/categories/:categoryId')
 		.get(categories.read)
-		.put(categories.update);
+		.put(categories.update)
+		.delete(categories.delete);
 
 	app.param('categoryId', categories.categoryById);
 };
