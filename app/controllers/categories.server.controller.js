@@ -44,7 +44,7 @@ exports.read = function(req, res) {
 				return res.json(category);
 			}
 		}
-	})
+	});
 };
 
 /**
@@ -106,7 +106,7 @@ exports.list = function(req, res) {
 exports.categoryById = function(req, res, next, id) {
 	if(!mongoose.Types.ObjectId.isValid(id)) {
 		return res.status(400).send({
-			message: "Invalid category"
+			message: 'Invalid category'
 		});
 	}
 
@@ -115,7 +115,7 @@ exports.categoryById = function(req, res, next, id) {
 			return next(err);
 		if (!category) {
 			return res.status(404).send({
-				message: "Category not found"
+				message: 'Category not found'
 			});
 		}
 		req.category = category;
