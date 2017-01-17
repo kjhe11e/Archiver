@@ -3,15 +3,16 @@
 module.exports = function(app) {
 	// Routing logic   
 	var categories = require('../../app/controllers/categories.server.controller');
+	var users = require('../../app/controllers/users.server.controller');
 
 	app.route('/categories')
 		.get(categories.list)
-		.post(categories.create);
+		.post(users.requiresLogin, categories.create);
 
 	app.route('/categories/:categoryId')
 		.get(categories.read)
-		.put(categories.update)
-		.delete(categories.delete);
+		.put(users.requiresLogin, categories.update)
+		.delete(users.requiresLogin, categories.delete);
 
 	app.param('categoryId', categories.categoryById);
 };
