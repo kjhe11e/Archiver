@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('categories').controller('CategoriesController', ['$scope', '$location', 'Categories'
+angular.module('categories').controller('CategoriesController', ['$scope', '$location', 'Categories',
 	function($scope, $location, Categories) {
 		// Controller Logic
 		// Create neww category

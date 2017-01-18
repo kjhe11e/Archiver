@@ -1,4 +1,4 @@
-<section data-ng-controller="CategoriesController">
+<section data-ng-controller="CategoriesController" data-ng-init="find()">
 	<div class="page-header">
 		<h1>Categories</h1>
 	</div>
@@ -10,6 +10,6 @@
 	</div>
 	<div>
 		<div class="alert alert-warning text-center" data-ng-hide="!categories.$resolved || categories.length">
-		<a href="#!/categories/create">Create a category</a> to continue
+		<a href="/#!/categories/create">Create a category</a> to continue
 	</div>
 </section>
