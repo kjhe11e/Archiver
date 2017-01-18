@@ -1,12 +1,16 @@
 'use strict';
 
-angular.module('categories').controller('CategoriesController', ['$scope', '$location', 'Categories',
-	function($scope, $location, Categories) {
+// Categories controller
+angular.module('categories').controller('CategoriesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Categories',
+	function($scope, $stateParams, $location, Authentication, Categories) {
 		// Controller Logic
-		// Create neww category
+
+		$scope.authentication = Authentication;
+
+		// Create new category
 		$scope.create = function() {
 			// Create new category object
-			var category = new Categories({
+			var category = new Categories ({
 				name: this.name,
 				description: this.description
 			});
@@ -25,6 +29,13 @@ angular.module('categories').controller('CategoriesController', ['$scope', '$loc
 		// Find a list in categories
 		$scope.find = function() {
 			$scope.categories = Categories.query();
+		};
+
+		// Find existing category
+		$scope.findOne = function() {
+			$scope.category = Categories.get({
+				categoryId: $stateParams.categoryId
+			});
 		};
 	}
 ]);
