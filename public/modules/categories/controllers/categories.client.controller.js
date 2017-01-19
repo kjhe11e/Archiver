@@ -26,6 +26,16 @@ angular.module('categories').controller('CategoriesController', ['$scope', '$sta
 			});
 		};
 
+		$scope.update = function() {
+			var category = $scope.category;
+
+			category.$update(function(response) {
+				$location.path('categories/' + category._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
 		// Find a list in categories
 		$scope.find = function() {
 			$scope.categories = Categories.query();
