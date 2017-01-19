@@ -47,5 +47,21 @@ angular.module('categories').controller('CategoriesController', ['$scope', '$sta
 				categoryId: $stateParams.categoryId
 			});
 		};
+
+		$scope.remove = function(category) {
+			if (category) {
+				category.$remove();
+
+				for(var i in $scope.categories) {
+					if($scope.categories[i] == category) {
+						$scope.categories.splice(i, 1);
+					}
+				}
+			} else {
+				$scope.category.$remove(function() {
+					$location.path('categories');
+				});
+			}
+		};
 	}
 ]);
