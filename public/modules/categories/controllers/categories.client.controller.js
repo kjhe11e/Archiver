@@ -53,7 +53,7 @@ angular.module('categories').controller('CategoriesController', ['$scope', '$sta
 				category.$remove();
 
 				for(var i in $scope.categories) {
-					if($scope.categories[i] == category) {
+					if($scope.categories[i] === category) {
 						$scope.categories.splice(i, 1);
 					}
 				}

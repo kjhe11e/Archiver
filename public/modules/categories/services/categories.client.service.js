@@ -8,11 +8,5 @@ angular.module('categories').factory('Categories', ['$resource',
 				method: 'PUT'
 			}
 		});
-		return $resource('categories/:categoryId/edit', { categoryId: '@_id' },
-		{
-			update: {
-				method: 'PUT'
-			}
-		});
 	}
 ]);
