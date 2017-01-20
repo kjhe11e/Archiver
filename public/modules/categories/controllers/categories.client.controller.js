@@ -6,6 +6,13 @@ angular.module('categories').controller('CategoriesController', ['$scope', '$sta
 		// Controller Logic
 
 		$scope.authentication = Authentication;
+		$scope.currentPage = 1;
+		$scope.pageSize = 10;
+		$scope.offset = 0;
+
+		$scope.pageChanged = function() {
+			$scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
+		};
 
 		// Create new category
 		$scope.create = function() {
