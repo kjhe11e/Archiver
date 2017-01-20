@@ -70,5 +70,9 @@ angular.module('categories').controller('CategoriesController', ['$scope', '$sta
 				});
 			}
 		};
+
+		$scope.categorySearch = function(item) {
+			$location.path('/categories/' + item._id);
+		};
 	}
 ]);
